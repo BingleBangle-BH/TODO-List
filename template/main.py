@@ -19,6 +19,11 @@ output = template.render(data=data)
 
 # Print the output to the console
 print(output)
+
+# Write the generated HTML to a file
+with open('../docs/index.html', 'w') as f:
+    f.write(output)
+
 # Create a Substrate interface object to connect to the node
 substrate = SubstrateInterface(
     url="http://localhost:9933",
