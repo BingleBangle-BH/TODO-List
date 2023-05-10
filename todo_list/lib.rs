@@ -4,6 +4,7 @@
 #[ink::contract]
 mod todo_list {
     use ink_prelude::string::String;
+    use ink::env::test::default_accounts;
     /// Defines the storage of your contract.
     /// Add new fields to the below struct in order
     /// to add new static storage fields to your contract.
@@ -35,14 +36,6 @@ mod todo_list {
             Self::new(Default::default(), String::default())
         }
 
-        /// A message that can be called on instantiated contracts.
-        /// This one flips the value of the stored `bool` from `true`
-        /// to `false` and vice versa.
-        #[ink(message)]
-        pub fn flip(&mut self) {
-            self.value = !self.value;
-        }
-
         /// Return task
         #[ink(message)]
         pub fn get_task(&self) -> String {
@@ -53,6 +46,13 @@ mod todo_list {
         #[ink(message)]
         pub fn get_owner(&self) -> AccountId {
             self.owner
+        }
+
+        /// Remove task
+        #[ink(message)]
+        pub fn remove_task(&mut self){
+            assert!(self.only_owner());
+            self.value = !self.value;
         }
 
         /// Modify task
@@ -84,13 +84,38 @@ mod todo_list {
 
         /// We test a simple use case of our contract.
         #[ink::test]
-        fn it_works() {
+        fn modify_task() {
             let mut todo_list = TodoList::new(false, String::from("Clean the toilet"));
             assert_eq!(todo_list.get_task(), "Clean the toilet");
             todo_list.modify_task(String::from("Wash the clothes"));
             assert_eq!(todo_list.get_task(), "Wash the clothes");
-            ink::env::debug_println!("test");
-            // println!("{}", format!( "{:#?} ", todo_list.get_owner()));
+            // ink::env::debug_println!("test");
+            // println!("{}", format!( "{:?} ", todo_list.get_owner()));
+        }
+
+        // Test owner access
+        #[ink::test]
+        #[should_panic]
+        fn only_owner_access() {
+            // let _owner: AccountId = AccountId::from([0x01; 32]);
+            let mut todo_list = TodoList::new(false, String::from("Clean the toilet"));
+            let caller: AccountId = default_accounts::<ink::env::DefaultEnvironment>()
+                .bob;
+
+
+            ink::env::test::set_caller::<ink::env::DefaultEnvironment>(caller);
+            // println!("Owner = {}", format!( "{:?} ", todo_list.get_owner()));
+            // println!("Caller = {:?}", caller);
+            todo_list.modify_task(String::from("Wash the clothes"));
+        }
+
+        // Test task deletion
+        #[ink::test]
+        fn remove_task() {
+            let mut todo_list = TodoList::new(true, String::from("Clean the toilet"));
+            assert_eq!(todo_list.value, true);
+            todo_list.remove_task();
+            assert_eq!(todo_list.value, false);
         }
     }
 }
