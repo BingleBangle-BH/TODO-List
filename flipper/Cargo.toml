@@ -1,19 +1,17 @@
 [package]
-name = "todo_list"
+name = "flipper"
 version = "0.1.0"
 authors = ["[your_name] <[your_email]>"]
 edition = "2021"
 
 [dependencies]
-ink = { version = "4.2.0", default-features = false }
-ink_prelude = { version = "4.2.0", default-features = false }
-ink_env = { version = "4.2.0", default-features = false }
+ink = { version = "4.0.0-beta", default-features = false }
 
 scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
 scale-info = { version = "2.3", default-features = false, features = ["derive"], optional = true }
 
 [lib]
-name = "todo_list"
+name = "flipper"
 path = "lib.rs"
 crate-type = [
 	# Used for normal contract Wasm blobs.
@@ -24,7 +22,6 @@ crate-type = [
 default = ["std"]
 std = [
     "ink/std",
-    "ink_env/std",
     "scale/std",
     "scale-info/std",
 ]
