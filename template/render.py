@@ -16,7 +16,24 @@ class renderpage:
         task_list = []
         for element in task_details:
             logging.info(f'Task name: {element[0]}. OwnerID: {element[1][0][0]}. Alias: {element[1][0][1]}')
-            task_list.append({'name': element[0], 'ownerid': element[1][0][0], 'alias': element[1][0][1]})
+            name = element[0]
+            ownerid = element[1][0][0]
+            alias = element[1][0][1]
+            if name == 'Alice':
+                task_list.append({'name': name, 
+                                'ownerid': ownerid, 
+                                'alias': alias,
+                                'data-filter': '.filter-app'})
+            elif name == 'Bob':
+                task_list.append({'name': name, 
+                                'ownerid': ownerid, 
+                                'alias': alias,
+                                'data-filter': '.filter-card'})
+            elif name == 'Charlie':
+                task_list.append({'name': name, 
+                                'ownerid': ownerid, 
+                                'alias': alias,
+                                'data-filter': '.filter-web'})
 
 
         # task_user = [{'name': 'Alice', 'task': 'clean'}]
