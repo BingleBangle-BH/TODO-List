@@ -19,26 +19,26 @@ class renderpage:
             name = element[0]
             ownerid = element[1][0][0]
             alias = element[1][0][1]
-            if name == 'Alice':
+            print(type(str(name)))
+            if alias == 'Alice':
                 task_list.append({'name': name, 
                                 'ownerid': ownerid, 
                                 'alias': alias,
-                                'data-filter': '.filter-app'})
-            elif name == 'Bob':
+                                'data_filter': '.filter-app'})
+            elif alias == 'Bob':
                 task_list.append({'name': name, 
                                 'ownerid': ownerid, 
                                 'alias': alias,
-                                'data-filter': '.filter-card'})
-            elif name == 'Charlie':
+                                'data_filter': '.filter-card'})
+            elif alias == 'Charlie':
                 task_list.append({'name': name, 
                                 'ownerid': ownerid, 
                                 'alias': alias,
-                                'data-filter': '.filter-web'})
+                                'data_filter': '.filter-web'})
 
 
         # task_user = [{'name': 'Alice', 'task': 'clean'}]
         data_filter = ['.filter-app', '.filter-card', '.filter-web']
-        output = self.template.render(task_user=task_list, 
-                                      data_filter=data_filter)
+        output = self.template.render(task_user=task_list)
         with open('../docs/index.html', 'w') as f:
             f.write(output)

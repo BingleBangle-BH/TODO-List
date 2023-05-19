@@ -75,7 +75,7 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               {% for user in task_user %}
-                <li data-filter={{data_filter[loop.index0]}}>{{user.alias}}</li>
+                <li data-filter={{user.data_filter}}>{{user.alias}}</li>
               {% endfor %}
               
               <!-- <li data-filter=".filter-app"></li> -->
