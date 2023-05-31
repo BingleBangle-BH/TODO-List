@@ -107,11 +107,12 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Wash the plates</h4>
-                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i></button> -->
+                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wash the plates><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
+                  
                   <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wash the plates" title="Modify"><i class="bi bi-plus"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
                   <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-file-excel"></i></a>
@@ -125,11 +126,12 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Clean the cabinets</h4>
-                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i></button> -->
+                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Clean the cabinets><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
+                  
                   <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Clean the cabinets" title="Modify"><i class="bi bi-plus"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
                   <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-file-excel"></i></a>
@@ -143,11 +145,12 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Wipe the table</h4>
-                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i></button> -->
+                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wipe the table><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
+                  
                   <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wipe the table" title="Modify"><i class="bi bi-plus"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
                   <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-file-excel"></i></a>
@@ -164,8 +167,9 @@
                 <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Pack the storeroom</h4>
-                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i></button> -->
+                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Pack the storeroom><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
+                  
                   <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Pack the storeroom" title="Modify"><i class="bi bi-plus"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
                   <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-file-excel"></i></a>
@@ -216,17 +220,6 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -240,16 +233,29 @@
             <div class="mb-3">
               <label for="task-name" class="col-form-label">New task name:</label>
               <input type="text" class="form-control" id="task-name">
+              <input type="hidden" class="form-control" id="old_task-name" value="">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Modify task</button>
+          <button id="postButton" type="button" class="btn btn-primary">Modify task</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

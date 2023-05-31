@@ -192,12 +192,53 @@
 
       // Update the modal's content.
       const modalTitle = exampleModal.querySelector('.modal-title')
-      const modalBodyInput = exampleModal.querySelector('.modal-body input')
+      const modalBodyInput = exampleModal.querySelector('.modal-body input[type="hidden"]')
 
       modalTitle.textContent = `Modify Task (Previous task: ${task})`
-      modalBodyInput.value = recipient
+      modalBodyInput.value = task
     })
   }
+
+  const postButton = document.getElementById('postButton');
+  const taskNameInput = document.getElementById('task-name');
+  const old_taskNameInput = document.getElementById('old_task-name');
+
+  // Add click event listener to the button
+  postButton.addEventListener('click', () => {
+    // Get the task name value
+    const taskName = taskNameInput.value;
+    const old_taskName = old_taskNameInput.value;
+
+    // Create a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open('POST', 'http://localhost:5000/Modify');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Set up the request data
+    const requestData = {
+      'new_task': taskName,
+      'old_task': old_taskName
+    };
+
+    // Convert the request data to JSON string
+    const jsonData = JSON.stringify(requestData);
+
+    // Set up the response handler
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Request succeeded
+        console.log(xhr.responseText);
+      } else {
+        // Request failed
+        console.error('Request failed:', xhr.status);
+      }
+    };
+
+    // Send the request
+    xhr.send(jsonData);
+  });
 
   /**
    * Portfolio details slider
