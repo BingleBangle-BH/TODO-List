@@ -100,7 +100,7 @@
                   <h4>{{user.name}}</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
-                  <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Modify"><i class="bi bi-plus"></i></a>
+                  <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{user.name}}" title="Modify"><i class="bi bi-plus"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
                   <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-file-excel"></i></a>
                 </div>
@@ -166,15 +166,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modify Task</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="mb-3">
+              <label for="task-name" class="col-form-label">New task name:</label>
+              <input type="text" class="form-control" id="task-name">
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Modify task</button>
         </div>
       </div>
     </div>
