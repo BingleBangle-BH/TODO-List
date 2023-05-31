@@ -763,8 +763,9 @@ section {
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-links h4 {
+  font-size: 20px;
+  font-weight: 600;
   color: #ffffff;
-  font-size: 14px;
   text-transform: uppercase;
 }
 
