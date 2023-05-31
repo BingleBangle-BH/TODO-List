@@ -106,8 +106,6 @@ class logic:
                 
 
 
-
-
     def connect(self):
         pass
 

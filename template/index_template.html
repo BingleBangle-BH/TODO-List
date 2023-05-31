@@ -85,6 +85,16 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
+          {% for user in task_user %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{user.name}}</h4>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
