@@ -76,9 +76,8 @@
               <li data-filter="*" class="filter-active">All</li>
               {% set temp_list = [] %}
               {% for user in task_user %}
-                {% if user.alias in temp_list %}
-                  {% set _ = temp_list.append(user.alias) %}
-                {% else %}
+                {% if user.alias not in temp_list %}
+                {% set _ = temp_list.append(user.alias) %}
                   <li data-filter={{user.data_filter}}>{{user.alias}}</li>
                 {% endif %}
               {% endfor %}
