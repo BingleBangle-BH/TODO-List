@@ -177,13 +177,6 @@
     selector: '.portfolio-lightbox'
   });
 
-  const myModal = document.getElementById('myModal')
-  const myInput = document.getElementById('myInput')
-
-  myModal.addEventListener('shown.bs.modal', () => {
-    myInput.focus()
-  })
-
   /**
    * Portfolio details slider
    */
