@@ -74,10 +74,14 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
+              {% set temp_list = [] %}
               {% for user in task_user %}
-                <li data-filter={{user.data_filter}}>{{user.alias}}</li>
+                {% if user.alias in temp_list %}
+                  {% set _ = temp_list.append(user.alias) %}
+                {% else %}
+                  <li data-filter={{user.data_filter}}>{{user.alias}}</li>
+                {% endif %}
               {% endfor %}
-              
               <!-- <li data-filter=".filter-app"></li> -->
             </ul>
           </div>
