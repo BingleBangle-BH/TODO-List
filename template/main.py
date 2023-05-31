@@ -78,7 +78,7 @@ class logic:
                 receipt = contract.transfer(keypairlist[0], key)
                 logging.info(f'Extrinsic "{receipt.extrinsic_hash}" sent and included in block "{receipt.block_hash}"')
 
-        for i in range(0,6):
+        for i in range(0,4):
             contract.connect_contract(contract_address)
             keypair = keypairlist[i%3]
             alias = aliaslist[i%3]
