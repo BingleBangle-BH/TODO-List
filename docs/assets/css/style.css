@@ -762,6 +762,12 @@ section {
   bottom: 0;
 }
 
+.portfolio .portfolio-wrap:hover .portfolio-links h4 {
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
