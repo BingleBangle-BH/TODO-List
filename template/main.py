@@ -7,8 +7,6 @@ from render import renderpage
 from contractcaller import contractcaller
 import os
 
-
-
 # substrate = SubstrateInterface(
 #     url="ws://127.0.0.1:9944",
 #     ss58_format=42,
@@ -32,10 +30,6 @@ import os
 # result = contract.read(keypair=keypair,
 #                        function='create_task',
 #                        args={'init_alias': 'Alice','init_task': 'clean the table'})
-
-
-
-
 
 # print('Executing contract call...')
 # contract_receipt = contract.exec(keypair, 
@@ -104,8 +98,6 @@ class logic:
                 page.update(element)
                 break
                 
-
-
     def connect(self):
         pass
 
@@ -183,8 +175,6 @@ if __name__ == "__main__":
 # substrate = SubstrateInterface(
 #     url="http://localhost:9933",
 # )
-
-
 
 # # Define the account to use for the query
 # keypair = Keypair.create_from_uri('//Alice')
