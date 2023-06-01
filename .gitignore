@@ -14,7 +14,8 @@ Cargo.lock
 *.pdb
 
 # Template
-/substrate-node-template/
+# /substrate-node-template/
+# /contract-substrate-node-template
 
 # PYTHON
 # Byte-compiled / optimized / DLL files
