@@ -102,6 +102,7 @@ class logic:
     def update_account(self, alias):
         self.contract_address = os.getenv('contract_address')
         contract = contractcaller(self.contract_address)
+        contract.connect_contract(self.contract_address)
         result = contract.read(keypair=self.keypairlist[0],
                                function='get_all_task')
         for index, element in enumerate(result.contract_result_data):
@@ -110,7 +111,6 @@ class logic:
                 page = renderpage()
                 page.update_page(element, alias)
                 break
-
 
     def connect(self):
         pass
@@ -121,17 +121,40 @@ class logic:
     def create_task(self):
         pass
 
-    def modify_task(self, new_task = str, old_task = str):
+    def modify_task(self, alias: str, new_task: str, old_task: str):
+        self.contract_address = os.getenv('contract_address')
         contract = contractcaller(self.contract_address)
         contract.connect_contract(self.contract_address)
-        # result = contract.read(keypair=keypair,
-        #                             function='create_task',
-        #                             args={'init_alias': alias,'init_task': task})
+        alias_index = self.aliaslist.index(alias)
+        keypair = self.keypairlist[alias_index]
+        result = contract.read(keypair=keypair,
+                                    function='modify_task',
+                                    args={'_task': old_task,'new_task': new_task})
+        
+        contract_receipt = contract.exec(keypair=keypair, 
+                                        function='modify_task', 
+                                        args={'_task': old_task,'new_task': new_task}, 
+                                        gas_limit=result.gas_required)
 
-        pass
+        logging.info(f'New task {new_task} modify: {contract_receipt.is_success}')
 
-    def remove_task(self):
-        pass
+    def remove_task(self, alias:str, task: str):
+        self.contract_address = os.getenv('contract_address')
+        contract = contractcaller(self.contract_address)
+        contract.connect_contract(self.contract_address)
+        alias_index = self.aliaslist.index(alias)
+        keypair = self.keypairlist[alias_index]
+        result = contract.read(keypair=keypair,
+                                    function='remove_task',
+                                    args={'_task': task})
+
+        contract_receipt = contract.exec(keypair=keypair, 
+                                        function='remove_task', 
+                                        args={'_task': task}, 
+                                        gas_limit=result.gas_required)
+        
+        logging.info(f'{task} remove result : {contract_receipt.is_success}')
+
 
     def get_task(self):
         pass   

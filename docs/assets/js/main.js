@@ -203,12 +203,14 @@
   const postButton = document.getElementById('postButton');
   const taskNameInput = document.getElementById('task-name');
   const old_taskNameInput = document.getElementById('old_task-name');
+  const alias_input = document.getElementById('account');
 
   // Add click event listener to the button
   postButton.addEventListener('click', () => {
     // Get the task name value
     const taskName = taskNameInput.value;
     const old_taskName = old_taskNameInput.value;
+    const alias_name = alias_input.value;
 
     // Create a new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
@@ -220,7 +222,8 @@
     // Set up the request data
     const requestData = {
       'new_task': taskName,
-      'old_task': old_taskName
+      'old_task': old_taskName,
+      'alias': alias_name
     };
 
     // Convert the request data to JSON string

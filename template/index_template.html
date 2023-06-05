@@ -49,7 +49,7 @@
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" value="{{account}}">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="account" value="{{account}}">
           {{account}}
         </button>
         <ul class="dropdown-menu">
@@ -110,10 +110,14 @@
                   <h4>{{user.name}}</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{user.name}}><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
-                  
-                  <a href="http://localhost:5000/Modify" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{user.name}}" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
+                  {% if user.alias == account %}
+                  <a href="http://localhost:5000/Modify?alias={{account}}&task={{user.name}}" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{user.name}}" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
                   <!-- <a href="http://localhost:5000/Modify" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Modify"><i class="bi bi-plus"></i></a> -->
-                  <a href="http://localhost:5000/Delete" title="Delete"><i class="bi bi-x"></i></a>
+                  <a href="http://localhost:5000/Delete?alias={{account}}&task={{user.name}}" title="Delete"><i class="bi bi-x"></i></a>
+                  {% else %}
+                  <a href="http://localhost:5000/Modify?alias=chooseaccount&task=chooseaccount" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{user.name}}" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
+                  <a href="http://localhost:5000/Delete?alias=chooseaccount&task=chooseaccount" title="Delete"><i class="bi bi-x"></i></a>
+                  {% endif %}
                 </div>
               </div>
             </div>

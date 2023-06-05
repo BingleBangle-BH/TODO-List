@@ -10,10 +10,13 @@ CORS(app)
 @app.route("/Modify", methods=['POST'])
 def modify():
     data = request.get_json()
+
     if request.method == 'POST':        
         app = logic()
-        app.modify_task(data["new_task"], data["old_task"])
-        return f'{data["new_task"], data["old_task"]}'
+        print(data["alias"])
+        app.modify_task(data["alias"], data["new_task"], data["old_task"])
+        app.update_account(data["alias"])
+        return redirect('http://127.0.0.1:5500/docs/index.html')
     else: 
         return "Only POST request"
     
@@ -28,12 +31,17 @@ def account():
     else: 
         return "Only GET request"    
 
-@app.route("/Delete", methods=['POST'])
+@app.route("/Delete", methods=['GET'])
 def delete():
-    if request.method == 'POST':
-        return "Hello, World!"
+    app = logic()
+    alias = request.args.get('alias')
+    if alias != 'chooseaccount':
+        task = request.args.get('task')
+        app.remove_task(alias, task)
+        app.update_account(alias)
+        return redirect('http://127.0.0.1:5500/docs/index.html')
     else: 
-        return "Only POST request"
+        return "Choose an account"
     
 if __name__ == '__main__':
     app.run(port=5500)
