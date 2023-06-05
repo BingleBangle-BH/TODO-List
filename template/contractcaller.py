@@ -41,6 +41,11 @@ class contractcaller:
                                                             substrate=self.substrate)
 
     def read(self, keypair, function: str, args: dict = {}) -> dict:
+        self.contract = ContractInstance.create_from_address(contract_address=self.contract_address,
+                                                    metadata_file=os.path.join(os.path.dirname(__file__),
+                                                                                '../todo_list/target/ink',
+                                                                                'metadata.json'),
+                                                    substrate=self.substrate)
         result = self.contract.read(keypair, function, args)
         # return result.contract_result_data
         return result

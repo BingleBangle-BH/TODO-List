@@ -48,34 +48,35 @@ import os
 class logic:
     def __init__(self):
         logging.basicConfig(level=logging.INFO)
-        self.contract_address = os.getenv("contract_address")
+        self.contract_address = None
+        self.aliaslist = ['Alice', 'Bob', 'Charlie']
+        self.keypairlist = [Keypair.create_from_uri('//Alice'), 
+                    Keypair.create_from_uri('//Bob'),
+                    Keypair.create_from_uri('//Charlie')]
         pass
 
     def setup(self):
         tasklist = ['Wash the plates', 'Clean the cabinets', 'Wipe the table', 
                     'Pack the storeroom', 'Iron the clothes', 'Unload the weights',
                     'Feed the pets', 'Buy kibbles', 'Nap with cat']
-        aliaslist = ['Alice', 'Bob', 'Charlie']
-        keypairlist = [Keypair.create_from_uri('//Alice'), 
-                    Keypair.create_from_uri('//Bob'),
-                    Keypair.create_from_uri('//Charlie')]
+
         contract = contractcaller()
-        contract_address = contract.deploy() # Deploy contract
-        logging.info(f'✅ Deployed @ {contract_address}')
+        self.contract_address = contract.deploy() # Deploy contract
+        logging.info(f'✅ Deployed @ {self.contract_address}')
         with open(".env", "w") as f:
-            f.write(f'contract_address={contract_address}')
+            f.write(f'contract_address={self.contract_address}')
     
-        for key in keypairlist:
+        for key in self.keypairlist:
             result = contract.check_balance(key.ss58_address)
             balance = result.value['data']['free']
             if balance < 1 * 10**5:
-                receipt = contract.transfer(keypairlist[0], key)
+                receipt = contract.transfer(self.keypairlist[0], key)
                 logging.info(f'Extrinsic "{receipt.extrinsic_hash}" sent and included in block "{receipt.block_hash}"')
 
         for i in range(0,4):
-            contract.connect_contract(contract_address)
-            keypair = keypairlist[i%3]
-            alias = aliaslist[i%3]
+            contract.connect_contract(self.contract_address)
+            keypair = self.keypairlist[i%3]
+            alias = self.aliaslist[i%3]
             task = tasklist[i]
             result = contract.read(keypair=keypair,
                                     function='create_task',
@@ -88,16 +89,29 @@ class logic:
             
             logging.info(f'Task {i+1} result : {contract_receipt.is_success}')
 
-        result = contract.read(keypair=keypairlist[0],
+        result = contract.read(keypair=self.keypairlist[0],
                                function='get_all_task')
         # logging.info(f'Result : {result.contract_result_data}')
         for index, element in enumerate(result.contract_result_data):
             if index == 1:
                 logging.info(f'Result : {element}')
                 page = renderpage()
-                page.update(element)
+                page.update_page(element)
                 break
-                
+
+    def update_account(self, alias):
+        self.contract_address = os.getenv('contract_address')
+        contract = contractcaller(self.contract_address)
+        result = contract.read(keypair=self.keypairlist[0],
+                               function='get_all_task')
+        for index, element in enumerate(result.contract_result_data):
+            if index == 1:
+                logging.info(f'Result : {element}')
+                page = renderpage()
+                page.update_page(element, alias)
+                break
+
+
     def connect(self):
         pass
 
@@ -107,7 +121,13 @@ class logic:
     def create_task(self):
         pass
 
-    def modify_task(self):
+    def modify_task(self, new_task = str, old_task = str):
+        contract = contractcaller(self.contract_address)
+        contract.connect_contract(self.contract_address)
+        # result = contract.read(keypair=keypair,
+        #                             function='create_task',
+        #                             args={'init_alias': alias,'init_task': task})
+
         pass
 
     def remove_task(self):

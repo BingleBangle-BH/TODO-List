@@ -177,9 +177,10 @@
     selector: '.portfolio-lightbox'
   });
 
+
   /**
    * Modal
-    */
+   */
   const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
     exampleModal.addEventListener('show.bs.modal', event => {

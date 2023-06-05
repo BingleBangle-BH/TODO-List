@@ -12,7 +12,7 @@ class renderpage:
     def default(self):
         pass
 
-    def update(self, task_details: list):
+    def update_page(self, task_details: list, account = "Choose Account"):
         task_list = []
         for element in task_details:
             logging.info(f'Task name: {element[0]}. OwnerID: {element[1][0][0]}. Alias: {element[1][0][1]}')
@@ -39,6 +39,6 @@ class renderpage:
 
         # task_user = [{'name': 'Alice', 'task': 'clean'}]
         data_filter = ['.filter-app', '.filter-card', '.filter-web']
-        output = self.template.render(task_user=task_list)
+        output1 = self.template.render(task_user=task_list, account = account)
         with open('../docs/index.html', 'w') as f:
-            f.write(output)
+            f.write(output1)
