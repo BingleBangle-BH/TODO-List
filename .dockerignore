@@ -1,0 +1,7 @@
+contract-node-template
+myenv
+target_contract
+target_substrate
+flipper
+substrate-node-template/target/
+todo_list/target/

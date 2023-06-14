@@ -1,0 +1,5 @@
+services:
+  environment:
+    image: todolist:latest
+    env_file:
+      - template/.env

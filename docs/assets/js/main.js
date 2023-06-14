@@ -234,6 +234,7 @@
       if (xhr.status === 200) {
         // Request succeeded
         console.log(xhr.responseText);
+        location.reload();
       } else {
         // Request failed
         console.error('Request failed:', xhr.status);
@@ -243,6 +244,131 @@
     // Send the request
     xhr.send(jsonData);
   });
+
+
+  /**
+   * Account Modal
+   */
+  const AccountModal = document.getElementById('AccountModal')
+
+  const postAccountButton = document.getElementById('postAccountButton');
+  const aliasInput = document.getElementById('alias');
+
+  // Add click event listener to the button
+  postAccountButton.addEventListener('click', () => {
+    // Get the task name value
+    const alias_name = aliasInput.value;
+
+    // Create a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open('POST', 'http://localhost:5000/CreateAccount');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Set up the request data
+    const requestData = {
+      'alias': alias_name
+    };
+
+    // Convert the request data to JSON string
+    const jsonData = JSON.stringify(requestData);
+
+    // Set up the response handler
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Request succeeded
+        console.log(xhr.responseText);
+      } else {
+        // Request failed
+        console.error('Request failed:', xhr.status);
+      }
+    };
+
+    // Send the request
+    xhr.send(jsonData);
+  });
+
+  /**
+   * Page listener
+   */
+
+  const accountElements = document.querySelectorAll('.GetAccount');
+
+  // Iterate over each account element and attach the click event listener
+  accountElements.forEach((account) => {
+    account.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const alias_name = event.target.getAttribute('data-value');
+
+      // Rest of your XMLHttpRequest code...
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+      console.log(alias_name)
+
+      // Configure the request
+      xhr.open('GET', `http://localhost:5000/Account?alias=${encodeURIComponent(alias_name)}`);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      // Set up the response handler
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Request succeeded
+          console.log(xhr.responseText);
+          location.reload();
+        } else {
+          // Request failed
+          console.error('Request failed:', xhr.status);
+        }
+      };
+
+      // Send the request
+      xhr.send();
+    });
+  });
+
+  /**
+   * Page listener (delete task)
+   */
+
+  const deleteElements = document.querySelectorAll('.DeleteTask');
+
+  // Iterate over each account element and attach the click event listener
+  deleteElements.forEach((deletetask) => {
+    deletetask.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const parameters = deletetask.getAttribute('data-value');
+
+      // Rest of your XMLHttpRequest code...
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+      console.log(parameters)
+      // Configure the request
+      xhr.open('GET', `http://localhost:5000/Delete?${(parameters)}`);
+
+      // Set up the response handler
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Request succeeded
+          if (xhr.responseText === "Choose a correct account!"){
+            alert('Choose a correct account!');
+          }else {
+            console.log(xhr.responseText);
+            location.reload();
+          }
+        } else {
+          // Request failed
+          console.error('Request failed:', xhr.status);
+        }
+      };
+
+      // Send the request
+      xhr.send();
+    });
+  }); 
+
 
   /**
    * Portfolio details slider

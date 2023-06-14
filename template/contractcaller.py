@@ -17,7 +17,7 @@ class contractcaller:
 
         # Deploy contract
         code = ContractCode.create_from_contract_files(
-            metadata_file=os.path.join(os.path.dirname(__file__), '../todo_list/target/ink', 'metadata.json'),
+            metadata_file=os.path.join(os.path.dirname(__file__), '../todo_list/target/ink', 'todo_list.json'),
             wasm_file=os.path.join(os.path.dirname(__file__), '../todo_list/target/ink', 'todo_list.wasm'),
             substrate=self.substrate
         )
@@ -36,8 +36,8 @@ class contractcaller:
     def connect_contract(self, contract_address: str):
         self.contract = ContractInstance.create_from_address(contract_address=contract_address,
                                                             metadata_file=os.path.join(os.path.dirname(__file__),
-                                                                                       '../todo_list/target/ink',
-                                                                                       'metadata.json'),
+                                                                                    '../todo_list/target/ink',
+                                                                                    'todo_list.json'),
                                                             substrate=self.substrate)
 
     def read(self, keypair, function: str, args: dict = {}) -> dict:

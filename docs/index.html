@@ -57,23 +57,23 @@
           
             
             
-              <li><a class="dropdown-item" href="http://localhost:5000/Account?alias=Alice">Alice</a></li>
+              <li><a class="dropdown-item GetAccount" ahref="#" data-value="Alice">Alice</a></li>
             
           
             
             
-              <li><a class="dropdown-item" href="http://localhost:5000/Account?alias=Bob">Bob</a></li>
+              <li><a class="dropdown-item GetAccount" ahref="#" data-value="Bob">Bob</a></li>
             
           
             
             
-              <li><a class="dropdown-item" href="http://localhost:5000/Account?alias=Charlie">Charlie</a></li>
+              <li><a class="dropdown-item GetAccount" ahref="#" data-value="Charlie">Charlie</a></li>
             
           
             
           
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Create your own account</a></li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#CreateModal">Create your own account (WORK IN PROGRESS)</a></li>
         </ul>
       </div>
 
@@ -129,14 +129,14 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Wash the plates</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wash the plates><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
                   
                   <a href="http://localhost:5000/Modify?alias=chooseaccount&task=chooseaccount" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wash the plates" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
-                  <a href="http://localhost:5000/Delete?alias=chooseaccount&task=chooseaccount" title="Delete"><i class="bi bi-x"></i></a>
+                  <a class="DeleteTask" data-value="alias=chooseaccount&task=chooseaccount" href="#" title="Delete"><i class="bi bi-x"></i></a>
                   
                 </div>
               </div>
@@ -148,14 +148,14 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Clean the cabinets</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Clean the cabinets><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
                   
                   <a href="http://localhost:5000/Modify?alias=chooseaccount&task=chooseaccount" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Clean the cabinets" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
-                  <a href="http://localhost:5000/Delete?alias=chooseaccount&task=chooseaccount" title="Delete"><i class="bi bi-x"></i></a>
+                  <a class="DeleteTask" data-value="alias=chooseaccount&task=chooseaccount" href="#" title="Delete"><i class="bi bi-x"></i></a>
                   
                 </div>
               </div>
@@ -167,14 +167,14 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Wipe the table</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wipe the table><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
                   
                   <a href="http://localhost:5000/Modify?alias=chooseaccount&task=chooseaccount" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Wipe the table" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
-                  <a href="http://localhost:5000/Delete?alias=chooseaccount&task=chooseaccount" title="Delete"><i class="bi bi-x"></i></a>
+                  <a class="DeleteTask" data-value="alias=chooseaccount&task=chooseaccount" href="#" title="Delete"><i class="bi bi-x"></i></a>
                   
                 </div>
               </div>
@@ -186,33 +186,19 @@
                 
                 
                 
-                <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+                <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-links">
                   <h4>Pack the storeroom</h4>
                   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Pack the storeroom><i class="bi bi-plus"></i></button> -->
                   <!-- <a href="http://localhost:5000/Modify" title="Modify"></a> -->
                   
                   <a href="http://localhost:5000/Modify?alias=chooseaccount&task=chooseaccount" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Pack the storeroom" title="Modify"><i class="bi bi-arrow-up-short"></i></a>
-                  <a href="http://localhost:5000/Delete?alias=chooseaccount&task=chooseaccount" title="Delete"><i class="bi bi-x"></i></a>
+                  <a class="DeleteTask" data-value="alias=chooseaccount&task=chooseaccount" href="#" title="Delete"><i class="bi bi-x"></i></a>
                   
                 </div>
               </div>
             </div>
           
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-file-excel"></i></a>
-              </div>
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-            </div>
-          </div>
 
         </div>
 
@@ -262,6 +248,30 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="postButton" type="button" class="btn btn-primary">Modify task</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create account Modal -->
+  <div class="modal fade" id="AccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="AccountModalLabel">Create account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="alias" class="col-form-label">New alias:</label>
+              <input type="text" class="form-control" id="alias">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="postAccountButton" type="button" class="btn btn-primary">Create account</button>
         </div>
       </div>
     </div>

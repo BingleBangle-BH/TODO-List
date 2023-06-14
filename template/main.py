@@ -48,7 +48,12 @@ import os
 class logic:
     def __init__(self):
         logging.basicConfig(level=logging.INFO)
-        self.contract_address = None
+        try:
+            with open(os.path.join(os.path.dirname(__file__),"env.txt"), "r") as f:
+                lines = f.readlines()
+                self.contract_address = lines[0].replace('contract_address=', '')
+        except:
+            self.contract_address = os.getenv('contract_address')
         self.aliaslist = ['Alice', 'Bob', 'Charlie']
         self.keypairlist = [Keypair.create_from_uri('//Alice'), 
                     Keypair.create_from_uri('//Bob'),
@@ -63,7 +68,7 @@ class logic:
         contract = contractcaller()
         self.contract_address = contract.deploy() # Deploy contract
         logging.info(f'✅ Deployed @ {self.contract_address}')
-        with open(".env", "w") as f:
+        with open(os.path.join(os.path.dirname(__file__),"env.txt"), "w") as f:
             f.write(f'contract_address={self.contract_address}')
     
         for key in self.keypairlist:
@@ -100,7 +105,12 @@ class logic:
                 break
 
     def update_account(self, alias):
-        self.contract_address = os.getenv('contract_address')
+        try:
+            with open(os.path.join(os.path.dirname(__file__),"env.txt"), "r") as f:
+                lines = f.readlines()
+                self.contract_address = lines[0].replace('contract_address=', '')
+        except:
+            self.contract_address = os.getenv('contract_address')
         contract = contractcaller(self.contract_address)
         contract.connect_contract(self.contract_address)
         result = contract.read(keypair=self.keypairlist[0],
@@ -122,7 +132,12 @@ class logic:
         pass
 
     def modify_task(self, alias: str, new_task: str, old_task: str):
-        self.contract_address = os.getenv('contract_address')
+        try:
+            with open(os.path.join(os.path.dirname(__file__),"env.txt"), "r") as f:
+                lines = f.readlines()
+                self.contract_address = lines[0].replace('contract_address=', '')
+        except:
+            self.contract_address = os.getenv('contract_address')
         contract = contractcaller(self.contract_address)
         contract.connect_contract(self.contract_address)
         alias_index = self.aliaslist.index(alias)
@@ -139,7 +154,12 @@ class logic:
         logging.info(f'New task {new_task} modify: {contract_receipt.is_success}')
 
     def remove_task(self, alias:str, task: str):
-        self.contract_address = os.getenv('contract_address')
+        try:
+            with open(os.path.join(os.path.dirname(__file__),"env.txt"), "r") as f:
+                lines = f.readlines()
+                self.contract_address = lines[0].replace('contract_address=', '')
+        except:
+            self.contract_address = os.getenv('contract_address')
         contract = contractcaller(self.contract_address)
         contract.connect_contract(self.contract_address)
         alias_index = self.aliaslist.index(alias)

@@ -1,9 +1,11 @@
 from jinja2 import Template, Environment, FileSystemLoader
 import logging
+import os
 class renderpage:
     def __init__(self):
         logging.basicConfig(level=logging.INFO)
-        env = Environment(loader=FileSystemLoader(''))
+        env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(__file__),"src")), autoescape = True)
+        logging.info(f'Rendering template')
         self.template = env.get_template('index_template.html')
 
     def refresh(self):
@@ -40,5 +42,9 @@ class renderpage:
         # task_user = [{'name': 'Alice', 'task': 'clean'}]
         data_filter = ['.filter-app', '.filter-card', '.filter-web']
         output1 = self.template.render(task_user=task_list, account = account)
-        with open('../docs/index.html', 'w') as f:
-            f.write(output1)
+        try:
+            with open(os.path.join(os.path.dirname("/TODO-LIST/docs/"),"index.html"), 'w') as f:
+                f.write(output1)
+        except:
+            with open(os.path.join(os.path.dirname(__file__),"../docs/index.html"), 'w') as f:
+                f.write(output1)

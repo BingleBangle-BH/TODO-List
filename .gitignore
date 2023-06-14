@@ -192,3 +192,9 @@ cython_debug/
 
 # env
 /myenv/
+
+# makefile
+makefile
+
+# prometheus
+/prometheus/

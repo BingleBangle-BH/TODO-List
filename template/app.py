@@ -2,9 +2,9 @@ from flask import Flask, request, render_template, send_file, redirect
 from flask_cors import CORS
 
 from main import logic
+import os
 
-
-app = Flask(__name__)
+app = Flask(__name__, template_folder='src')
 CORS(app)
 
 @app.route("/Modify", methods=['POST'])
@@ -16,10 +16,16 @@ def modify():
         print(data["alias"])
         app.modify_task(data["alias"], data["new_task"], data["old_task"])
         app.update_account(data["alias"])
-        return redirect('http://127.0.0.1:5500/docs/index.html')
+        return "Okays"
     else: 
         return "Only POST request"
     
+@app.route("/CreateAccount", methods=['POST'])
+def createaccount():
+    data = request.get_json()
+    print(data["alias"])
+    return "Not implemented yet"
+
 @app.route("/Account", methods=['GET'])
 def account():
     app = logic()
@@ -27,7 +33,7 @@ def account():
     app.update_account(alias)
     if request.method == 'GET':
         # return f"Current path: {current_path}"
-        return redirect('http://127.0.0.1:5500/docs/index.html')
+        return "Okays"
     else: 
         return "Only GET request"    
 
@@ -39,9 +45,9 @@ def delete():
         task = request.args.get('task')
         app.remove_task(alias, task)
         app.update_account(alias)
-        return redirect('http://127.0.0.1:5500/docs/index.html')
+        return "Okays"
     else: 
-        return "Choose an account"
+        return "Choose a correct account!"
     
 if __name__ == '__main__':
-    app.run(port=5500)
+    app.run(debug=True, host='0.0.0.0', port=5000)
