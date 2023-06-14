@@ -16,7 +16,10 @@ A full-stack development pet project experimenting with L1 Blockchain, smart con
 
 ## Quick Setup
 
-The project can be quickly setup using docker
+The project can be quickly setup using docker commands
+```
+
+```
 
 ## Usage
 
