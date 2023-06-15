@@ -15,9 +15,8 @@ Click [here](https://binglebangle-bh.github.io/TODO-List/)  to check out the sta
 - [Tech Stack](#tech-stack)
 - [Usage](#usage)
 - [Monitoring Node](#monitoring-node)
-- [Contributing](#contributing)
+- [Troubleshoot](#troubleshoot)
 - [License](#license)
-- [Contact](#contact)
 
 ## Quick Setup
 
@@ -89,9 +88,6 @@ You will have a web UI monitoring the substrate node.
 
 Bugs do occur where the page does not reload/refresh. Run it in incognito mode or simple restart the browser. That should do the trick.
 
-## Contributing
-
-Specify guidelines for contributing to your project. It can include information on how to report issues, submit feature requests, and contribute code or documentation.
 
 ## License
 
