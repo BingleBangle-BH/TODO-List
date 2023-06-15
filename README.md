@@ -5,6 +5,9 @@
 
 ![Front-ui](./images/Front-ui.png)
 
+
+## Description
+
 A full-stack development pet project experimenting with L1 Blockchain, smart contract and monitoring tools. 
 
 Click [here](https://binglebangle-bh.github.io/TODO-List/)  to check out the static front UI
@@ -17,6 +20,7 @@ Click [here](https://binglebangle-bh.github.io/TODO-List/)  to check out the sta
 - [Monitoring Node](#monitoring-node)
 - [Troubleshoot](#troubleshoot)
 - [License](#license)
+- [Credits](#credits)
 
 ## Quick Setup
 
